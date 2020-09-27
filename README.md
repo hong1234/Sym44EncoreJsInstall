@@ -6,12 +6,11 @@ cd Sym44EncoreJsInstall
 
 composer install
 
-npm install
-
-
 php bin/console make:migration
 
 php bin/console doctrine:migrations:migrate
+
+npm install
 
 yarn encore production
 
