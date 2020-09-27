@@ -8,6 +8,11 @@ composer install
 
 npm install
 
+
+php bin/console make:migration
+
+php bin/console doctrine:migrations:migrate
+
 yarn encore production
 
 php -S localhost:8000 -t public/
