@@ -17,6 +17,12 @@ class LocationRepository extends ServiceEntityRepository
         $this->manager = $manager;
     }
 
+    public function addLocation(Location $location)
+    {
+	$this->manager->persist($location);
+        $this->manager->flush();
+    }
+
     public function searchLocation(String $searchkey)
     {
         return $this->createQueryBuilder('l')
