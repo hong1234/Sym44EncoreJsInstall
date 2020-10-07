@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "01aa5c3dde7a6090741e924197295bef",
+    "content-hash": "6b3c50bb2d7eaf50e3869fd5aa2227c7",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1484,7 +1484,7 @@
         },
         {
             "name": "symfony/asset",
-            "version": "v4.4.14",
+            "version": "v4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset.git",

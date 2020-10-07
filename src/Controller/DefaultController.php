@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends AbstractController
 {
+
     /**
      * @Route("/default", name="default")
      */
@@ -22,11 +23,21 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/search/location")
+     * @Route("/", name="home")
+     */
+    public function home()
+    {
+        return $this->render('default/index.html.twig', [
+            //'name' => $name,
+        ]);
+    }
+
+    /**
+     * @Route("/search/location", name="search_location")
      */
     public function search()
     {
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/location.html.twig', [
             //'name' => $name,
         ]);
     }
