@@ -10,7 +10,13 @@
 {% endblock %}
 
 {% block body %}
-    <div id = "root" class="container">
+    <div class="container">
+        {% for item in main_menu.getItems() %}
+            <img src="{{ asset('images/favicon.ico') }}" alt="missing image"/>
+            <a href="{{ path(item.path) }}">{{ item.label }}</a>
+        {% endfor %}
+        <div id = "root">
+        </div>
     </div>
 {% endblock %}
 

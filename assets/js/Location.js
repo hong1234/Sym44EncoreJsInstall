@@ -51,7 +51,7 @@ class Location extends Component {
                 <div className="row">
                     <div className="col-xs-12 col-sm-12 col-md-12">
                         <br/>
-                        <h2 className="d-block p-3 bg-secondary text-white">Location Search</h2>
+                        <h2 className="d-block p-3 bg-secondary text-white">Location Search Page</h2>
                     </div>
                 </div>
                 <div className="row">

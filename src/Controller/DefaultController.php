@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ProductRepository;
 use App\Repository\LocationRepository;
-use Symfony\Component\HttpFoundation\Request;
+use App\Service\Menu;
 
 class DefaultController extends AbstractController
 {
@@ -23,12 +24,22 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/", name="home")
+     * @Route("/", name="home_page")
      */
     public function home()
     {
         return $this->render('default/index.html.twig', [
-            //'name' => $name,
+            //'main_menu' => $menu
+        ]);
+    }
+
+    /**
+     * @Route("/main", name="main_page")
+     */
+    public function main(Menu $menu=null)
+    {
+        return $this->render('default/main.html.twig', [
+            'main_menu2' => $menu
         ]);
     }
 
