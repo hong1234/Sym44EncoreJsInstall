@@ -44,7 +44,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/search/location", name="search_location")
+     * @Route("/search/location", name="location_search")
      */
     public function search()
     {
@@ -54,7 +54,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/api/search", name="search_location_name", methods={"GET"})
+     * @Route("/api/search", name="location_search_by_name", methods={"GET"})
      */
     public function searchLocations(Request $request, LocationRepository $locationRepository)
     {

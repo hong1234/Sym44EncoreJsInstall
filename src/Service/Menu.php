@@ -7,7 +7,8 @@ class Menu {
 	return array(
             array('path' =>'home_page', 'label' =>'Home Page'),
             array('path' =>'main_page', 'label' =>'Main Page'),
-            array('path' =>'search_location', 'label' =>'Location Search Page')    
+            array('path' =>'location_new', 'label' =>'Add Location Page'),
+            array('path' =>'location_search', 'label' =>'Location Search Page')    
         );
     }
 }

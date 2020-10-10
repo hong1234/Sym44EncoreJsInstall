@@ -35,6 +35,21 @@ class Location
      */
     private $level;
 
+
+    private $parentId;
+
+    public function getParentId() {
+        return $this->parentId;
+    }
+
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+
+        return $this;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
