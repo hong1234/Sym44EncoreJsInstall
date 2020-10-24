@@ -11,9 +11,9 @@
 
 {% block body %}
     <div class="container">
+        <img src="{{ asset('images/favicon.ico') }}" alt="missing image"/>
         {% for item in main_menu.getItems() %}
-            <img src="{{ asset('images/favicon.ico') }}" alt="missing image"/>
-            <a href="{{ path(item.path) }}">{{ item.label }}</a>
+            <a href="{{ path(item.path) }}">{{ item.label }}</a> |
         {% endfor %}
         <div id = "root">
         </div>
