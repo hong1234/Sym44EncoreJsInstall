@@ -33,7 +33,7 @@ class LocationType extends AbstractType
 
         $builder
             ->add('name', TextType::class, array(
-                 'label' => 'Location__'
+                 'label' => 'Location_'
             ))
             ->add('parentId', ChoiceType::class, array(
                 'choices' => $choices,
