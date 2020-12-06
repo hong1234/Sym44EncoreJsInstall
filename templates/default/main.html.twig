@@ -2,9 +2,9 @@
 
 {% block body %}
     <div id = "root" class="container">
+        <img src="{{ asset('images/favicon.ico') }}" alt="missing image"/>
         {% for item in main_menu2.getItems() %}
-            <img src="{{ asset('images/favicon.ico') }}" alt="missing image"/>
-            <a href="{{ path(item.path) }}">{{ item.label }}</a>
+            <a href="{{ path(item.path) }}">{{ item.label }}</a> |
         {% endfor %}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">

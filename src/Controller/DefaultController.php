@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ProductRepository;
 use App\Repository\LocationRepository;
+use App\Repository\TestRepository;
 use App\Service\Menu;
 
 class DefaultController extends AbstractController
@@ -54,23 +55,31 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/api/search", name="location_search_by_name", methods={"GET"})
+     * @Route("/api/search2", name="location_search_by_name2", methods={"GET"})
      */
     public function searchLocations(Request $request, LocationRepository $locationRepository)
     {
         $searchkey = $request->query->get('lname');
-        $locations = $locationRepository
-                     //->searchLocation($searchkey)
-                     ->searchLocation2($searchkey)
-        ;
-        //var_dump(locations);exit;
 
-        //$data = array();
-        //foreach ($locations as $location) {
-        //   $data[]= array("lid"=>$location['l_id'], "name"=>$location['l_name'], "pid"=>$location['p_id'], "parent"=>$location['p_name']);
-        //}
-        //return $this->json($data);
+        $locations = $locationRepository->searchLocation2($searchkey);
+        return $this->json($locations);
 
+        // $locations = $locationRepository->searchLocation($searchkey);
+        // $data = array();
+        // foreach ($locations as $location) {
+        //    $data[]= array("l_id"=>$location['l_id'], "l_name"=>$location['l_name'], "p_id"=>$location['p_id'], "p_name"=>$location['p_name']);
+        // }
+        // return $this->json($data);
+    }
+
+    /**
+     * @Route("/api/search", name="location_search_by_name", methods={"GET"})
+     */
+    public function testDAO(Request $request, TestRepository $testRepository)
+    {
+        $searchkey = $request->query->get('lname');
+        $locations = $testRepository->searchLocation2($searchkey);
+        //var_dump($locations);
         return $this->json($locations);
     }
 
