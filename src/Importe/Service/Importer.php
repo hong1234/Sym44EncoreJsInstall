@@ -8,12 +8,10 @@ class Importer
 {
     public $parser;
     public $dim;
-    //public $ipConfig;
 
     function __construct(XmlParser $parser, DataImport $dim) {
         $this->parser = $parser;
         $this->dim = $dim;
-        //$this->ipConfig = $config->get('win_import');
     }
 
     function deleteDirectory($dirname)

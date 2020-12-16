@@ -3,23 +3,19 @@ namespace App\Importe\Service;
 
 use App\Importe\Entity\XmlData;
 use App\Importe\Dao\ImmoDao;
-//use App\Importe\Utils\Config;
+use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class DataImport
 {
     public $dao;
     public $bilder;
-    //public $ipConfig;
 
-    function __construct(ImmoDao $dao, String $bilder) {
+    function __construct(ImmoDao $dao, ContainerBagInterface $params) {
         $this->dao = $dao;
-        $this->bilder = $bilder;
-        //$this->ipConfig = $config->get('win_import');
+        $this->bilder = $params->get('image_depot');
     }
 
-    function dataHandling(XmlData $data, $path){
-        //echo "=====================\n";
-        //echo $path."\n";
+    function dataHandling(XmlData $data, String $path){
         //echo "UnZipp-odner = $path \n";
         if($data->umfang == 'TEIL'){
             echo "Do Something \n";

@@ -1,8 +1,8 @@
 <?php
 
-namespace Ivd24\Importe\Utils;
+namespace App\Importe\Utils;
 
-use Ivd24\Importe\Exception\NotFoundException;
+use App\Importe\Exception\NotFoundException;
 
 class Config {
     private $data;

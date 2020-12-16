@@ -6,10 +6,9 @@ use App\Importe\Entity\XmlData;
 
 class XmlParser
 {
-    //public $dao;
     
     function __construct() {
-        //$this->dao = $dao;
+        
     }
 
     function xmlParser(String $xmlfile)
