@@ -5,22 +5,27 @@ namespace App\Repository;
 use App\Entity\Location;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityManagerInterface;
+//use Doctrine\ORM\EntityManagerInterface;
 
 class LocationRepository extends ServiceEntityRepository
 { 
-    private $manager;
+    //private $manager;
 
-    public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
+    //public function __construct(ManagerRegistry $registry, EntityManagerInterface $manager)
+    //{
+    //    parent::__construct($registry, Location::class);
+    //    $this->manager = $manager;
+    //}
+
+    public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Location::class);
-        $this->manager = $manager;
     }
 
     public function addLocation(Location $location)
     {
-	$this->manager->persist($location);
-        $this->manager->flush();
+	    $this->getEntityManager()->persist($location);
+        $this->getEntityManager()->flush();
     }
 
     public function searchLocation(String $searchkey)
@@ -48,9 +53,10 @@ class LocationRepository extends ServiceEntityRepository
                FROM location as l1 LEFT JOIN location as l2 ON l1.parentid = l2.id 
                WHERE l1.parentid IN (SELECT l1.id FROM location as l1 WHERE l1.name LIKE :searchkey)';
 
-        $conn = $this->manager->getConnection();
+        //$conn = $this->manager->getConnection();
+        $conn = $this->getEntityManager()->getConnection();
         $stmt = $conn->prepare($sql);
         $stmt->execute(array('searchkey' => '%'.$searchkey.'%'));
-        return $stmt->fetchAll();          
+        return $stmt->fetchAllAssociative();//fetchAll();          
     }
 }
