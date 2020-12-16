@@ -24,11 +24,7 @@ class LocationType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-<<<<<<< HEAD
         $dql = "SELECT l.id, l.name from App\Entity\Location l WHERE l.level < 3 ORDER BY l.name ASC";
-=======
-        $dql = "SELECT l.id, l.name FROM App\Entity\Location l WHERE l.parent < 3 ORDER BY l.name ASC";
->>>>>>> 7e2956e489ab67741d3dfec0caf2ecfd0cd5e478
         $results = $options['entityManager']->createQuery($dql)->getArrayResult();
         $choices = array();
         foreach($results as $result) {
