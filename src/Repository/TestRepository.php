@@ -2,7 +2,11 @@
 namespace App\Repository;
 
 use Doctrine\ORM\EntityManagerInterface;
+<<<<<<< HEAD
 //use App\Entity\Result;
+=======
+use App\Entity\Result;
+>>>>>>> 7e2956e489ab67741d3dfec0caf2ecfd0cd5e478
 
 
 class TestRepository
@@ -36,6 +40,7 @@ class TestRepository
         return $stmt->fetchAllAssociative();//->fetchAll(); 
         //return $stmt->fetchAll(\PDO::FETCH_CLASS, Result::class);         
     }
+<<<<<<< HEAD
 
     public function getObjectsOfLocation(Int $locationId)
     {   
@@ -66,3 +71,6 @@ class TestRepository
 
     
 }
+=======
+}
+>>>>>>> 7e2956e489ab67741d3dfec0caf2ecfd0cd5e478
