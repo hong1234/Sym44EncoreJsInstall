@@ -1,6 +1,4 @@
 <?php
-
-// src/Command/HelloCommand.php
 namespace App\Command;
 
 use Symfony\Component\Console\Command\Command;
