@@ -6,16 +6,18 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
-//use GuzzleHttp\Client;
+use App\Importe\Service\LocationClient;
 
 class GuzzleCommand extends Command
 {
     // php bin/console app:guzzle-test
     protected static $defaultName = 'app:guzzle-test';
 
-    public function __construct()
+    private $locationClient;
+
+    public function __construct(LocationClient $locationClient)
     {
-        //$this->locationRepository = $locationRepository;
+        $this->locationClient = $locationClient;
         parent::__construct();
     }
 
@@ -31,7 +33,7 @@ class GuzzleCommand extends Command
     {
         //$output->writeln('Location '.$input->getArgument('locationname').' created.');
         //return 0;
-        $client = new \GuzzleHttp\Client();
+        //$client = new \GuzzleHttp\Client();
         //$response = $client->request('GET', 'https://api.github.com/repos/guzzle/guzzle');
         
         //echo $response->getStatusCode() . "\n"; // 200
@@ -40,10 +42,14 @@ class GuzzleCommand extends Command
         //var_dump(json_decode ($response->getBody()));
 
 
-
+        //$client = new \GuzzleHttp\Client();
         //$response = $client->request('GET', 'http://localhost:8000/api/location?lname=München');
         //var_dump(json_decode ($response->getBody()));
         //echo (int)json_decode ($response->getBody())->l_id;
+
+        //$ortName = 'München';
+        //echo $this->locationClient->getLocationByName($ortName);
+
 
         //$response = $client->request('GET', 'http://localhost:8000/api/location/search?lname=berg');
         //var_dump(json_decode ($response->getBody()));
@@ -51,6 +57,42 @@ class GuzzleCommand extends Command
         //     echo "------------\n";
         //     echo $obj->l_id . " | " . $obj->l_name . "\n";
         // }
+
+        // $searchkey = 'test';
+        // $objs = $this->locationClient->searchLocationByName($searchkey);
+        // foreach ($objs as $obj) {
+        //     echo "------------\n";
+        //     echo $obj->l_id . " | " . $obj->l_name . "\n";
+        // }
+
+
+        // $response = $client->post('http://localhost:8000/api/location', [
+        //     'headers' => ['Content-Type' => 'application/json'],
+        //     'body' => json_encode([
+        //         "name" => "Hanoi", 
+        //         "parentid" => 2,
+        //         "level" => 2
+        //     ])
+        // ]);
+
+        // echo $response->getStatusCode() . "\n";
+
+        $location = [
+           "name" => "TestYYY", 
+           "parentid" => 2,
+           "level" => 2
+        ];
+
+        echo $this->locationClient->insertLocation($location);
+
+        /////////
+
+        $searchkey = 'test';
+        $objs = $this->locationClient->searchLocationByName($searchkey);
+        foreach ($objs as $obj) {
+            echo "------------\n";
+            echo $obj->l_id . " | " . $obj->l_name . "\n";
+        }
 
 
         // $client = new Client();
@@ -63,19 +105,7 @@ class GuzzleCommand extends Command
         // // 'application/json; charset=utf8'
         // echo $res->getBody();
         // // {"type":"User"...'
-
-
-
-        $response = $client->post('http://localhost:8000/api/location', [
-            'headers' => ['Content-Type' => 'application/json'],
-            'body' => json_encode([
-                "name" => "Hanoi", 
-                "parentid" => 2,
-                "level" => 2
-            ])
-        ]);
-
-        echo $response->getStatusCode() . "\n";
+        
     }
 
 }

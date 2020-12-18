@@ -4,8 +4,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
+    ## Importer params ##
     #zip_depot: '%env(resolve:ZIP_DEPOT)%'
     image_depot: '%env(resolve:IMAGE_DEPOT)%'
+    ## Location Client params ##
+    location_get_url: 'http://localhost:8000/api/location?lname='
+    location_search_url: 'http://localhost:8000/api/location/search?lname='
+    location_insert_url: 'http://localhost:8000/api/location'
+
 
 services:
     # default configuration for services in *this* file
