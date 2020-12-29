@@ -15,7 +15,7 @@ class LocationService
     function getLocationByName(String $ortName) {
 
         $locations = $this->dao->getLocationByName([
-            $ortName
+            'locName' => $ortName
         ]);
         if(count($locations)==1){
             return $locations[0];
@@ -33,7 +33,7 @@ class LocationService
     // }
 
     function insertLocation(iterable $location) {
-        $this->dao->insertLocation($location);
-        return 1;
+        $status = $this->dao->insertLocation($location);
+        return ["status" => (int)$status];
     }
 }

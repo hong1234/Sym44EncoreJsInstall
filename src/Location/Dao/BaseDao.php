@@ -34,7 +34,6 @@ class BaseDao {
             //return false;
             throw new \Exception("Insert faild!");
         } 
-        //return $stmt->execute($values);
         //return true;
         return $rt;
     }

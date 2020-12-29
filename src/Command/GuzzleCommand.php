@@ -78,7 +78,7 @@ class GuzzleCommand extends Command
         // echo $response->getStatusCode() . "\n";
 
         // $location = [
-        //    "name" => "TestYYY", 
+        //    "name" => "TestYYY2", 
         //    "parentid" => 2,
         //    "level" => 2
         // ];
@@ -89,6 +89,7 @@ class GuzzleCommand extends Command
 
         $searchkey = 'test';
         $objs = $this->locationClient->searchLocationByName($searchkey);
+        echo "search-result:\n";
         foreach ($objs as $obj) {
             echo "------------\n";
             echo $obj->l_id . " | " . $obj->l_name . "\n";

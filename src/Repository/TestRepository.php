@@ -23,10 +23,10 @@ class TestRepository
                FROM location as l1 LEFT JOIN location as l2 ON l1.parentid = l2.id 
                WHERE l1.parentid IN (SELECT l1.id FROM location as l1 WHERE l1.name LIKE :searchkey)';
 
-         $stmt = $conn->prepare($sql);
-         $stmt->execute([
-             'searchkey' => '%'.$searchkey.'%',
-             ]);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'searchkey' => '%'.$searchkey.'%',
+        ]);
         
         // $sql = 'SELECT l1.id as l_id2, l1.name as l_name2 FROM location as l1 WHERE l1.name LIKE ?';
         // $stmt = $conn->prepare($sql);
