@@ -24,22 +24,29 @@ class DataImport
             //}
             $az = 0;
             foreach ($data->immobilien as $immo){
-                 $az++;
-                 echo "Immo #$az\n";
+                $az++;
+                echo "Immo #$az\n";
                 
-                 foreach ($immo->anhang as $ah){
-                    echo "Image: $ah\n";
-                    rename($path.'/'.$ah, $this->bilder.'/'.$ah);
-                 }
-                 echo "-------------\n";
-                 if(count($this->dao->getImmoByObjectHash([$immo->hashcode]))==0){
-                     $this->dao->insertImmo([
-                         $immo->objektnr, 
-                         $immo->hashcode, 
-                         $immo->action, 
-                         $immo->ort
-                     ]);
+                if(count($this->dao->getImmoByObjectHash([$immo->hashcode]))==0){
+
+                    // import images
+                    foreach ($immo->anhang as $ah){
+                        echo "Image: $ah\n";
+                        rename($path.'/'.$ah, $this->bilder.'/'.$ah);
+                    }
+
+                    // import object-data INSERT
+                    $this->dao->insertImmo([
+                        'objectnr' => $immo->objektnr, 
+                        'objecthash' => $immo->hashcode, 
+                        'todo' => $immo->action, 
+                        'ort' => $immo->ort
+                    ]);
+
+                    // import object-data UPDATE
                 }
+
+                echo "-------------\n";
             }
         }
     }

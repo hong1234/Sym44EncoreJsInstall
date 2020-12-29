@@ -77,13 +77,13 @@ class GuzzleCommand extends Command
 
         // echo $response->getStatusCode() . "\n";
 
-        $location = [
-           "name" => "TestYYY", 
-           "parentid" => 2,
-           "level" => 2
-        ];
+        // $location = [
+        //    "name" => "TestYYY", 
+        //    "parentid" => 2,
+        //    "level" => 2
+        // ];
 
-        echo $this->locationClient->insertLocation($location);
+        // echo $this->locationClient->insertLocation($location);
 
         /////////
 

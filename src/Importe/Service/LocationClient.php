@@ -16,7 +16,8 @@ class LocationClient
         $location_get_url = $this->params->get('location_get_url');
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $location_get_url.$ortName);
+        //$response = $client->request('GET', $location_get_url.$ortName);
+        $response = $client->get($location_get_url.$ortName);
         //var_dump(json_decode ($response->getBody()));
         //echo (int)json_decode ($response->getBody())->l_id;
         return (int)json_decode ($response->getBody())->l_id;
@@ -27,7 +28,8 @@ class LocationClient
         $location_search_url = $this->params->get('location_search_url');
 
         $client = new \GuzzleHttp\Client();
-        $response = $client->request('GET', $location_search_url.$searchkey);
+        //$response = $client->request('GET', $location_search_url.$searchkey);
+        $response = $client->get($location_search_url.$searchkey);
         //var_dump(json_decode ($response->getBody()));
         // foreach (json_decode ($response->getBody()) as $obj) {
         //     echo "------------\n";

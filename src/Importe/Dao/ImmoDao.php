@@ -19,7 +19,7 @@ class ImmoDao extends BaseDao {
     }
 
     public function insertImmo(iterable $values){
-        $sql = 'INSERT INTO immo (objectnr, objecthash, todo, ort) VALUES (?, ?, ?, ?)';
+        $sql = 'INSERT INTO immo (objectnr, objecthash, todo, ort) VALUES (:objectnr, :objecthash, :todo, :ort)';
         return $this->doSQL($sql, $values);
     }
 
