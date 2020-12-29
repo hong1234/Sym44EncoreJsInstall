@@ -27,7 +27,7 @@ class DataImport
                 $az++;
                 echo "Immo #$az\n";
                 
-                if(count($this->dao->getImmoByObjectHash([$immo->hashcode]))==0){
+                if(count($this->dao->getImmoByObjectHash(['objecthash' => $immo->hashcode]))==0){
 
                     // import images
                     foreach ($immo->anhang as $ah){

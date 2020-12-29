@@ -9,12 +9,12 @@ class ImmoDao extends BaseDao {
     // }
 
     public function getImmoByObjectHash(iterable $values) {
-        $sql = 'SELECT * FROM immo WHERE objecthash = ?';
+        $sql = 'SELECT * FROM immo WHERE objecthash = :objecthash';
         return $this->doQuery($sql, $values);
     }
 
     public function getImmoByObjectNr(iterable $values) {
-        $sql = 'SELECT * FROM immo WHERE objectnr = ?';
+        $sql = 'SELECT * FROM immo WHERE objectnr = :objectnr';
         return $this->doQuery($sql, $values);
     }
 
@@ -24,7 +24,7 @@ class ImmoDao extends BaseDao {
     }
 
     public function updateLog(iterable $values){
-        $sql = 'UPDATE logging SET titel=?, content=? WHERE id=?';
+        $sql = 'UPDATE logging SET titel = :titel, content = :content WHERE id = :id';
         return $this->doSQL($sql, $values);
     }
 
