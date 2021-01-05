@@ -8,7 +8,7 @@ class Immobilie {
     public $objektnr = '';
     public $nutzungsart = '';
     public $vermarktungsart = '';
-    public $ort = '';
     public $kontaktperson = '';
     public $anhang = array();
+    public $geo = array();
 }

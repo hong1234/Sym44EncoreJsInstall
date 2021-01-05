@@ -3,14 +3,17 @@ namespace App\Importe\Service;
 
 use App\Importe\Entity\XmlData;
 use App\Importe\Dao\ImmoDao;
+use App\Importe\Service\LocationSolution;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 
 class DataImport
 {
+    public $locationSolution;
     public $dao;
     public $bilder;
 
-    function __construct(ImmoDao $dao, ContainerBagInterface $params) {
+    function __construct(LocationSolution $locationSolution, ImmoDao $dao, ContainerBagInterface $params) {
+        $this->locationSolution = $locationSolution;
         $this->dao = $dao;
         $this->bilder = $params->get('image_depot');
     }
@@ -40,10 +43,14 @@ class DataImport
                         'objectnr' => $immo->objektnr, 
                         'objecthash' => $immo->hashcode, 
                         'todo' => $immo->action, 
-                        'ort' => $immo->ort
+                        'ort' => $immo->geo['ort']
                     ]);
 
                     // import object-data UPDATE
+
+                    // location solution
+                    $locationId = $this->locationSolution->setLocation($immo->geo['ort']);
+                    echo "locationId-of-object: $locationId \n";
                 }
 
                 echo "-------------\n";

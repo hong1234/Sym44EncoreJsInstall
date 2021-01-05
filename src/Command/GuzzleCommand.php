@@ -7,17 +7,26 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 
 use App\Importe\Service\LocationClient;
+use App\Importe\Service\LocationSolution;
 
 class GuzzleCommand extends Command
 {
     // php bin/console app:guzzle-test
     protected static $defaultName = 'app:guzzle-test';
 
-    private $locationClient;
+    // private $locationClient;
 
-    public function __construct(LocationClient $locationClient)
+    // public function __construct(LocationClient $locationClient)
+    // {
+    //     $this->locationClient = $locationClient;
+    //     parent::__construct();
+    // }
+
+    private $locationSolution;
+
+    public function __construct(LocationSolution $locationSolution)
     {
-        $this->locationClient = $locationClient;
+        $this->locationSolution = $locationSolution;
         parent::__construct();
     }
 
@@ -87,13 +96,13 @@ class GuzzleCommand extends Command
 
         /////////
 
-        $searchkey = 'test';
-        $objs = $this->locationClient->searchLocationByName($searchkey);
-        echo "search-result:\n";
-        foreach ($objs as $obj) {
-            echo "------------\n";
-            echo $obj->l_id . " | " . $obj->l_name . "\n";
-        }
+        // $searchkey = 'Berg';
+        // $objs = $this->locationClient->searchLocationByName($searchkey);
+        // echo "search-result:\n";
+        // foreach ($objs as $obj) {
+        //     echo "------------\n";
+        //     echo $obj->l_id . " | " . $obj->l_name . "\n";
+        // }
 
 
         // $client = new Client();
@@ -106,6 +115,9 @@ class GuzzleCommand extends Command
         // // 'application/json; charset=utf8'
         // echo $res->getBody();
         // // {"type":"User"...'
+
+        $rs = $this->locationSolution->setLocation('myHomeTown6');
+        var_dump($rs);
         
     }
 

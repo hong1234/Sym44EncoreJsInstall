@@ -20,7 +20,7 @@ class LocationClient
         $response = $client->get($location_get_url.$ortName);
         //var_dump(json_decode ($response->getBody()));
         //echo (int)json_decode ($response->getBody())->l_id;
-        return (int)json_decode ($response->getBody())->l_id;
+        return (int)json_decode($response->getBody())->l_id;
     }
 
     function searchLocationByName(String $searchkey) {
@@ -35,7 +35,7 @@ class LocationClient
         //     echo "------------\n";
         //     echo $obj->l_id . " | " . $obj->l_name . "\n";
         // }
-        return json_decode ($response->getBody());
+        return json_decode($response->getBody());
     }
 
     function insertLocation(iterable $location) {
@@ -51,8 +51,9 @@ class LocationClient
             'headers' => ['Content-Type' => 'application/json'],
             'body' => json_encode($location)
         ]);
-
-        return $response->getStatusCode();
+        //return $response->getStatusCode();
+        return array_merge(json_decode($response->getBody(), true), ["status" => $response->getStatusCode()]);
+        //return json_decode($response->getBody(), true);
     }
 
 }

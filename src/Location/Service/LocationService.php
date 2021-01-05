@@ -33,7 +33,7 @@ class LocationService
     // }
 
     function insertLocation(iterable $location) {
-        $status = $this->dao->insertLocation($location);
-        return ["status" => (int)$status];
+        $locationId = $this->dao->insertLocation($location);
+        return ["locationId" => $locationId];
     }
 }

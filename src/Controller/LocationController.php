@@ -54,7 +54,7 @@ class LocationController extends AbstractController
         //}
 
         $location = json_decode($request->getContent(), true);
-        $status = $locationService->insertLocation($location);
-        return new Response(json_encode($status), Response::HTTP_CREATED, ['Content-Type' => 'application/json']);
+        $rs = $locationService->insertLocation($location);
+        return new Response(json_encode($rs), Response::HTTP_CREATED, ['Content-Type' => 'application/json']);
     }
 }

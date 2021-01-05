@@ -68,9 +68,15 @@ class XmlParser
                 //echo "$vermarktungsart\n";
                 $imdata->vermarktungsart = $vermarktungsart;
 
-                //$ort = $immo->geo->ort;
-                //echo "$ort\n";
-                $imdata->ort = $immo->geo->ort->__toString();
+                //$imdata->geo['plz'] = isset($immo->geo->plz) ? $immo->geo->plz->__toString() : '-';
+                //$imdata->geo['breitengrad'] = isset($immo->geo->geokoordinaten['breitengrad']) ? $immo->geo->geokoordinaten['breitengrad']->__toString() : '-';
+                //$imdata->geo['laengengrad'] = isset($immo->geo->geokoordinaten['laengengrad']) ? $immo->geo->geokoordinaten['laengengrad']->__toString() : '-';
+                $imdata->geo['ort'] = isset($immo->geo->ort) ? $immo->geo->ort->__toString() : '-';
+                //$imdata->geo['strasse'] = isset($immo->geo->strasse) ? $immo->geo->strasse->__toString() : '-';
+                //$imdata->geo['hausnummer'] = isset($immo->geo->hausnummer) ? $immo->geo->hausnummer->__toString() : '-';
+                //$imdata->geo['bundesland'] = isset($immo->geo->bundesland) ? $immo->geo->bundesland->__toString() : '-';
+                //$imdata->geo['iso_land'] = isset($immo->geo->land['iso_land']) ? $immo->geo->land['iso_land']->__toString() : '-';
+
 
                 //echo "kontaktperson ---\n";
                 //$kontaktperson = $immo->kontaktperson->vorname;

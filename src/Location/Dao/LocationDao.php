@@ -10,7 +10,10 @@ class LocationDao extends BaseDao {
 
     public function insertLocation(iterable $values) {
         $sql = 'INSERT INTO location (name, parentid, level) VALUES (:name, :parentid, :level)';
-        return $this->doSQL($sql, $values);
+        if($this->doSQL($sql, $values)){
+            return $this->conn->lastInsertId();
+        }
+        return 0;
     }
 
     public function searchLocationByName(iterable $values){
